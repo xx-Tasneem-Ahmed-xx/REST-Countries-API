@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REST-COUNTRIES-API</title>
 
+    <title>REST Contries</title>
     <!-- Style Sheets -->
     <link rel="stylesheet" href="./CSS/style.css" />
     <link rel="stylesheet" href="./CSS/main.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="darkTheme.css" />
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +20,42 @@
     />
   </head>
   <body>
-    <img src="http://www.w3.org/2000/svg" alt="" />
+    <main class="main">
+      <header id="header">
+        <h1>Where in the world?</h1>
+        <div class="theme">
+          <img
+            src="assets/moon-outline.svg"
+            alt="theme-icon"
+            class="icon theme-icon"
+          />
+          <button class="btn-mode" onclick="changeTheme()">Dark Mode</button>
+        </div>
+      </header>
+      <div class="search-bar">
+        <div class="search">
+          <img src="assets/search-outline.svg" alt="search icon" class="icon" />
+          <input
+            type="text"
+            class="search-input body3-fonts"
+            placeholder="Search for a country..."
+            id="search-input"
+          />
+        </div>
+        <div class="filter">
+          <select>
+            <option value="" disabled selected hidden>Filter by Region</option>
+            <option value="1">Afric</option>
+            <option value="2">America</option>
+            <option value="3">Asia</option>
+            <option value="4">Europe</option>
+            <option value="5">Oceania</option>
+          </select>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
     <section class="main">
       <div class="grid-container"></div>
     </section>
