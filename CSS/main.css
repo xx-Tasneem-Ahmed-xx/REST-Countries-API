@@ -1,0 +1,37 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+  place-items: center;
+  align-items: start;
+  font-family: "Nunito Sans", sans-serif;
+}
+.grid-container div {
+  max-width: 280px;
+  min-height: 230px;
+}
+.grid-container img {
+  width: 280px;
+  height: 200px;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+}
+.grid-container .card {
+  box-shadow: 0px 10px 10px rgba(68, 63, 63, 0.333);
+  border-radius: 10px;
+}
+
+.grid-container .name {
+  font-weight: 800;
+  font-size: 25px;
+}
+.grid-container .property {
+  font-weight: 700;
+}
+
+.grid-container span {
+  font-weight: 500;
+}
+.grid-container .cardInfo {
+  padding-left: 20px;
+}
