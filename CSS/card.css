@@ -1,3 +1,13 @@
+main button {
+  padding: 10px 30px;
+  box-shadow: -1px 0px 4px rgba(68, 63, 63, 0.333);
+  margin: 40px 0px 0px 40px;
+  border-radius: 5px;
+}
+main button p {
+  display: inline;
+  font-size: 20px;
+}
 main > .card {
   margin: 80px 0px 0px 40px;
   font-family: "Nunito Sans", sans-serif;
