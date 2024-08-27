@@ -1,0 +1,27 @@
+main > .card {
+  margin: 80px 0px 0px 40px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.card > div {
+  display: inline-block;
+}
+.card img {
+  width: 500px;
+  margin-right: 120px;
+}
+
+.cardInfo {
+  height: 100px;
+  display: flexbox;
+}
+.cardInfo h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+.cardInfo p {
+  margin: 20px 0px;
+  width: max-content;
+}
+.cardInfo span {
+  font-weight: 700;
+}
