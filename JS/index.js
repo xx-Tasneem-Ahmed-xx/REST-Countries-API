@@ -25,6 +25,7 @@ const displayCard = function (card) {
   const domain = document.querySelector("main .cardInfo p:nth-child(7)");
   const currencies = document.querySelector("main .cardInfo p:nth-child(8)");
   const languages = document.querySelector("main .cardInfo p:nth-child(9)");
+  const border = document.querySelector("main .cardInfo p:nth-child(10)");
 
   // getting card name from local storage
   const cName = localStorage.getItem("cardName");
@@ -33,12 +34,14 @@ const displayCard = function (card) {
     .then((response) => response.json())
     .then((json) => {
       //searching for country in json by name
-      const findCountry = function (objects) {
-        return objects.name === cName;
-      };
-
-      const country = json.find(findCountry);
-      console.log(country);
+      function findme(target, property) {
+        const findBorders = function (object) {
+          return object[property] === target;
+        };
+        return json.find(findBorders);
+      }
+      // console.log(findme("FRA", "alpha3Code").name);
+      const country = findme(cName, "name");
 
       // Seting card page elements with their value
       img.src = country.flags.svg;
@@ -53,7 +56,15 @@ const displayCard = function (card) {
       currencies.innerHTML = `<span>Currencies: </span>${country.currencies[0].name}`;
       languages.innerHTML = "<span>Languages: </span>";
       for (const obj of country.languages)
-        languages.textContent += `${obj.nativeName} `;
+        languages.innerHTML += `${obj.nativeName} `;
+
+      border.innerHTML = "<span>Border Countries: </span>";
+      // const bordersArray = [];
+      for (const item of country.borders)
+        border.innerHTML += ` <span class='border'>${
+          findme(item, "alpha3Code").name
+        }</sapn>`;
+      // for(const obj of country.)
     });
 };
 
