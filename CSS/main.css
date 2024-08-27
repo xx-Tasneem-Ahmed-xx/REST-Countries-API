@@ -35,3 +35,9 @@
 .grid-container .cardInfo {
   padding-left: 20px;
 }
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
