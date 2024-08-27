@@ -17,15 +17,31 @@ const displayCard = function (card) {
   //   //DOM for card page
   const img = document.querySelector("main .card img");
   const name = document.querySelector("main .cardInfo > h2");
-  const nativeName = document.querySelector("main .cardInfo  p:nth-child(2)");
-  const population = document.querySelector("main .cardInfo p:nth-child(3)");
-  const region = document.querySelector("main .cardInfo p:nth-child(4)");
-  const subRegion = document.querySelector("main .cardInfo p:nth-child(5)");
-  const capital = document.querySelector("main .cardInfo p:nth-child(6)");
-  const domain = document.querySelector("main .cardInfo p:nth-child(7)");
-  const currencies = document.querySelector("main .cardInfo p:nth-child(8)");
-  const languages = document.querySelector("main .cardInfo p:nth-child(9)");
-  const border = document.querySelector("main .cardInfo p:nth-child(10)");
+  const nativeName = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(1)"
+  );
+  const population = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(2)"
+  );
+  const region = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(3)"
+  );
+  const subRegion = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(4)"
+  );
+  const capital = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(5)"
+  );
+  const domain = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(6)"
+  );
+  const currencies = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(7)"
+  );
+  const languages = document.querySelector(
+    "main .cardInfo .flex-p p:nth-child(8)"
+  );
+  const border = document.querySelector("main > div > div.cardInfo > p");
 
   // getting card name from local storage
   const cName = localStorage.getItem("cardName");

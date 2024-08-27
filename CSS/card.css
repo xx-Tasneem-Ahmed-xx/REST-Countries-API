@@ -1,6 +1,7 @@
 main > .card {
   margin: 80px 0px 0px 40px;
   font-family: "Nunito Sans", sans-serif;
+  display: flex;
 }
 .card > div {
   display: inline-block;
@@ -8,6 +9,7 @@ main > .card {
 .card img {
   width: 500px;
   margin-right: 120px;
+  border-radius: 10px;
 }
 
 .cardInfo {
@@ -17,11 +19,34 @@ main > .card {
 .cardInfo h2 {
   font-size: 40px;
   font-weight: 800;
+  margin-bottom: 20px;
 }
 .cardInfo p {
-  margin: 20px 0px;
+  margin: 10px 0px;
   width: max-content;
 }
 .cardInfo span {
   font-weight: 700;
+}
+
+.cardInfo .flex-p {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 220px;
+}
+
+.cardInfo span.border {
+  padding: 10px;
+  box-shadow: -2px 3px 3px rgba(68, 63, 63, 0.333);
+  margin: 5px;
+  border-radius: 5px;
+  font-weight: 400;
+}
+body > main > div > div.cardInfo > p {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
 }
