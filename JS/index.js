@@ -116,7 +116,7 @@ const generateCards = function (json) {
     name.classList.add("name");
     cardInfo.classList.add("cardInfo");
     population.classList.add("property");
-    region.classList.add("property");
+    region.classList.add("property", "region");
     capital.classList.add("property");
 
     // Adding Event listeners
@@ -126,3 +126,43 @@ const generateCards = function (json) {
 
 if (currentPage.includes("card.html"))
   document.addEventListener("DOMContentLoaded", displayCard);
+
+//Search function
+const countryName = document.getElementsByClassName("name");
+const searchInput = document.querySelector("#search-input");
+searchInput.addEventListener("input", (e) => {
+  Array.from(countryName).forEach((country) => {
+    if (
+      country.innerText
+        .toLowerCase()
+        .startsWith(searchInput.value.toLowerCase())
+    )
+      country.parentElement.parentElement.style.display = "grid";
+    else country.parentElement.parentElement.style.display = "none";
+  });
+});
+
+//filter function
+const regionName = document.getElementsByClassName("region");
+////custom dropdown
+// const regions = document.querySelectorAll("Option");
+// regions.forEach((region) => {
+//   region.addEventListener("click", (e) => {
+//     Array.from(regionName).forEach((reg) => {
+//       if (reg.innerText.includes(region.innerText) || reg.innerText == "All")
+//         reg.parentElement.parentElement.style.display = "grid";
+//       else reg.parentElement.parentElement.style.display = "none";
+//     });
+//   });
+// });
+
+document.querySelector("select").addEventListener("change", function () {
+  const selectedValue = this.value;
+  Array.from(regionName).forEach((item) => {
+    if (selectedValue === "All" || item.innerText.includes(selectedValue)) {
+      item.parentElement.parentElement.style.display = "grid";
+    } else {
+      item.parentElement.parentElement.style.display = "none";
+    }
+  });
+});
