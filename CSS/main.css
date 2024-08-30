@@ -37,7 +37,19 @@
 }
 
 @media (max-width: 768px) {
+  .main {
+    margin-top: 1rem;
+  }
   .grid-container {
     grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 3vh;
+    margin-bottom: 3rem;
   }
 }
