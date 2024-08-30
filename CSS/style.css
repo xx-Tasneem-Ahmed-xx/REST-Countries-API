@@ -34,6 +34,8 @@ header h1 {
   background: none;
 }
 .theme button {
+  display: flex;
+  gap: 0.5rem;
   font-weight: 300;
   transition: all 300ms ease;
   padding: 0.5rem;
@@ -51,9 +53,7 @@ select {
   border: 0;
   cursor: pointer;
 }
-option {
-  background: white;
-}
+
 option:hover {
   background-color: rgb(163, 163, 163);
 }
@@ -84,6 +84,7 @@ option:hover {
 }
 .dark-button {
   color: white;
+  background-color: hsl(209, 23%, 22%);
 }
 .dark-button:hover {
   background-color: hsl(200, 15%, 8%);
