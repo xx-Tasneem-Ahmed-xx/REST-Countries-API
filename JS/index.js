@@ -130,12 +130,15 @@ if (currentPage.includes("card.html"))
 //Search function
 const countryName = document.getElementsByClassName("name");
 const searchInput = document.querySelector("#search-input");
+
 searchInput.addEventListener("input", (e) => {
+  const selectedRegion = document.querySelector("select").value;
   Array.from(countryName).forEach((country) => {
     if (
       country.innerText
         .toLowerCase()
-        .startsWith(searchInput.value.toLowerCase())
+        .startsWith(searchInput.value.toLowerCase()) &&
+      country.parentElement.innerText.includes(selectedRegion)
     )
       country.parentElement.parentElement.style.display = "grid";
     else country.parentElement.parentElement.style.display = "none";
@@ -144,17 +147,6 @@ searchInput.addEventListener("input", (e) => {
 
 //filter function
 const regionName = document.getElementsByClassName("region");
-////custom dropdown
-// const regions = document.querySelectorAll("Option");
-// regions.forEach((region) => {
-//   region.addEventListener("click", (e) => {
-//     Array.from(regionName).forEach((reg) => {
-//       if (reg.innerText.includes(region.innerText) || reg.innerText == "All")
-//         reg.parentElement.parentElement.style.display = "grid";
-//       else reg.parentElement.parentElement.style.display = "none";
-//     });
-//   });
-// });
 
 document.querySelector("select").addEventListener("change", function () {
   const selectedValue = this.value;

@@ -63,9 +63,10 @@ option:hover {
 }
 .search-input {
   background: white;
-  border: 0;
+  border: none;
+  outline: none;
+  cursor: text;
 }
-
 .search-bar {
   display: flex;
   justify-content: space-between;

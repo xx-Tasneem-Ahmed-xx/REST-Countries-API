@@ -1,10 +1,10 @@
 function applyTheme() {
-  if (localStorage.getItem("theme") == "dark") darkTheme();
+  if (localStorage.getItem("theme") === "dark") darkTheme();
   else lightTheme();
 }
 
 function applyInfoTheme() {
-  if (localStorage.getItem("theme") == "dark") darkInfo();
+  if (localStorage.getItem("theme") === "dark") darkInfo();
   else lightInfo();
 }
 
