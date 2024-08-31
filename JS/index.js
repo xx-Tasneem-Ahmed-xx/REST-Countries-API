@@ -141,8 +141,7 @@ if (currentPage.includes("card.html"))
 //Search function
 const countryName = document.getElementsByClassName("name");
 const searchInput = document.querySelector("#search-input");
-
-searchInput.addEventListener("input", (e) => {
+function handleSearch() {
   const selectedRegion = document.querySelector("select").value;
   Array.from(countryName).forEach((country) => {
     if (
@@ -154,13 +153,12 @@ searchInput.addEventListener("input", (e) => {
       country.parentElement.parentElement.style.display = "grid";
     else country.parentElement.parentElement.style.display = "none";
   });
-});
+}
 
 //filter function
 const regionName = document.getElementsByClassName("region");
-
-document.querySelector("select").addEventListener("change", function () {
-  const selectedValue = this.value;
+function handleFilter() {
+  const selectedValue = document.querySelector("select").value;
   Array.from(regionName).forEach((item) => {
     if (selectedValue === "All" || item.innerText.includes(selectedValue)) {
       item.parentElement.parentElement.style.display = "grid";
@@ -168,4 +166,4 @@ document.querySelector("select").addEventListener("change", function () {
       item.parentElement.parentElement.style.display = "none";
     }
   });
-});
+}
