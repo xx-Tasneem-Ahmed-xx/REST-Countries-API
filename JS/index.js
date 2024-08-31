@@ -141,7 +141,9 @@ if (currentPage.includes("card.html"))
 //Search function
 const countryName = document.getElementsByClassName("name");
 const searchInput = document.querySelector("#search-input");
+const message = document.querySelector(".not-found-message");
 function handleSearch() {
+  let found = false;
   const selectedRegion = document.querySelector("select").value;
   Array.from(countryName).forEach((country) => {
     if (
@@ -149,10 +151,15 @@ function handleSearch() {
         .toLowerCase()
         .startsWith(searchInput.value.toLowerCase()) &&
       country.parentElement.innerText.includes(selectedRegion)
-    )
+    ) {
       country.parentElement.parentElement.style.display = "grid";
-    else country.parentElement.parentElement.style.display = "none";
+      found = true;
+    } else {
+      country.parentElement.parentElement.style.display = "none";
+    }
   });
+  if (!found) message.style.display = "block";
+  else message.style.display = "none";
 }
 
 //filter function

@@ -106,3 +106,7 @@ option:hover {
 .dark-button:hover {
   background-color: hsl(200, 15%, 8%);
 }
+.not-found-message {
+  text-align: center;
+  display: none;
+}
