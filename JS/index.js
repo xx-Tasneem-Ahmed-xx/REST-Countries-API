@@ -1,6 +1,6 @@
 const currentPage = window.location.pathname;
 
-fetch("./data.json")
+fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
   .then((json) => {
     if (currentPage.includes("index.html")) generateCards(json);
@@ -16,7 +16,7 @@ const getCard = function (event) {
 const displayCard = function (card) {
   //   //DOM for card page
   const img = document.querySelector("main .card img");
-  const name = document.querySelector("main .cardInfo > h2");
+  const countryName = document.querySelector("main .cardInfo > h2");
   const nativeName = document.querySelector(
     "main .cardInfo .flex-p p:nth-child(1)"
   );
@@ -45,8 +45,7 @@ const displayCard = function (card) {
 
   // getting card name from local storage
   const cName = localStorage.getItem("cardName");
-  console.log(cName);
-  fetch("./data.json")
+  fetch("https://restcountries.com/v3.1/all")
     .then((response) => response.json())
     .then((json) => {
       //searching for country in json by name
@@ -56,31 +55,43 @@ const displayCard = function (card) {
         };
         return json.find(findBorders);
       }
-      // console.log(findme("FRA", "alpha3Code").name);
-      const country = findme(cName, "name");
+
+      const country = json.find((country) => country.name.common === cName);
 
       // Seting card page elements with their value
       img.src = country.flags.svg;
       img.alt = `${country.name} flag`;
-      name.textContent = `${country.name}`;
-      nativeName.innerHTML = `<span>Native Name: </span>${country.nativeName}`;
+      countryName.textContent = `${country.name.common}`;
+      nativeName.innerHTML = `<span>Native Name(s): </span>${Object.values(
+        country.name.nativeName
+      )
+        .map((val) => val.common)
+        .join(", ")}`;
       population.innerHTML = `<span>Population: </span>${country.population}`;
       region.innerHTML = `<span>Reigon: </span>${country.region}`;
-      subRegion.innerHTML = `<span>Sub Reigon: </span>${country.subregion}`;
+      subRegion.innerHTML = `<span>Sub Reigon: </span>${
+        country.subregion || "unknown"
+      }`;
       capital.innerHTML = `<span>Capital: </span>${country.capital}`;
-      domain.innerHTML = `<span>Top Level Domain: </span>${country.topLevelDomain}`;
-      currencies.innerHTML = `<span>Currencies: </span>${country.currencies[0].name}`;
-      languages.innerHTML = "<span>Languages: </span>";
-      for (const obj of country.languages)
-        languages.innerHTML += `${obj.nativeName} `;
+      domain.innerHTML = `<span>Top Level Domain: </span>${country.tld}`;
+      currencies.innerHTML = `<span>Currencies: </span>${Object.values(
+        country.currencies
+      )
+        .map((val) => val.name)
+        .join(", ")}`;
+      languages.innerHTML = `<span>Languages: </span>${Object.values(
+        country.languages
+      )
+        .map((lang) => lang)
+        .join(", ")} `;
 
       border.innerHTML = "<span>Border Countries: </span>";
-      // const bordersArray = [];
-      for (const item of country.borders)
-        border.innerHTML += ` <span class='border'>${
-          findme(item, "alpha3Code").name
-        }</sapn>`;
-      // for(const obj of country.)
+      if (country.borders)
+        for (const item of country.borders)
+          border.innerHTML += ` <span class='border'>${
+            findme(item, "cca3").name.common
+          }</span>`;
+      else border.innerHTML += "<span class='border'> none </span>";
     });
 };
 
@@ -93,7 +104,7 @@ const generateCards = function (json) {
     const card = document.createElement("div");
     const cardSvg = document.createElement("img");
     const cardInfo = document.createElement("div");
-    const name = document.createElement("p");
+    const countryName = document.createElement("p");
     const population = document.createElement("p");
     const region = document.createElement("p");
     const capital = document.createElement("p");
@@ -101,19 +112,19 @@ const generateCards = function (json) {
     // Appending
     container.append(card);
     card.append(cardSvg, cardInfo);
-    cardInfo.append(name, population, region, capital);
+    cardInfo.append(countryName, population, region, capital);
 
     // Adding data
     cardSvg.src = `${item.flags.svg}`;
     cardSvg.alt = `${item.name} Flag`;
-    name.textContent = `${item.name}`;
+    countryName.textContent = `${item.name.common}`;
     population.innerHTML = `Population: <span> ${item.population}</span>`;
     region.innerHTML = `Region:<span> ${item.region} </span>`;
     capital.innerHTML = `Capital: <span>${item.capital}</span>`;
 
     // Setting classes
     card.classList.add("card");
-    name.classList.add("name");
+    countryName.classList.add("name");
     cardInfo.classList.add("cardInfo");
     population.classList.add("property");
     region.classList.add("property", "region");
