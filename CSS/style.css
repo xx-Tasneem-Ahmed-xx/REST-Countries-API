@@ -110,3 +110,25 @@ option:hover {
   text-align: center;
   display: none;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 15vh;
+  }
+  .filter {
+    align-self: flex-start;
+  }
+  .search {
+    width: 100%;
+  }
+  select {
+    width: 45vh;
+  }
+  header {
+    margin-top: 0;
+  }
+}

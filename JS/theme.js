@@ -1,16 +1,16 @@
 function applyTheme() {
-  if (localStorage.getItem("theme") === "dark") darkTheme();
+  if (localStorage.getItem("theme") == "dark") darkTheme();
   else lightTheme();
 }
 
 function applyInfoTheme() {
-  if (localStorage.getItem("theme") === "dark") darkInfo();
+  if (localStorage.getItem("theme") == "dark") darkInfo();
   else lightInfo();
 }
 
 function changeTheme() {
   let theme = localStorage.getItem("theme");
-  if (theme === "dark") {
+  if (theme == "dark") {
     localStorage.setItem("theme", "light");
     lightTheme();
   } else {
@@ -21,7 +21,7 @@ function changeTheme() {
 
 function infoTheme() {
   let theme = localStorage.getItem("theme");
-  if (theme === "dark") {
+  if (theme == "dark") {
     localStorage.setItem("theme", "light");
     lightInfo();
   } else {
