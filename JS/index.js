@@ -99,6 +99,8 @@ const displayCard = function (card) {
 const container = document.querySelector(".grid-container");
 
 const generateCards = function (json) {
+  const theme = localStorage.getItem("theme");
+
   for (const item of json) {
     // Creating elements
     const card = document.createElement("div");
@@ -124,6 +126,7 @@ const generateCards = function (json) {
 
     // Setting classes
     card.classList.add("card");
+    theme === "dark" && card.classList.add("dark-header");
     countryName.classList.add("name");
     cardInfo.classList.add("cardInfo");
     population.classList.add("property");
