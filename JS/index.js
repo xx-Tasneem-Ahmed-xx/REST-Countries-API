@@ -10,7 +10,7 @@ const getCard = function (event) {
   const card = event.target.closest(".card ");
   const pname = card.querySelector(".cardInfo .name").textContent;
   localStorage.setItem("cardName", pname);
-  window.open("card.html", "_blank");
+  window.location = "./card.html";
 };
 
 const displayCard = function (card) {
