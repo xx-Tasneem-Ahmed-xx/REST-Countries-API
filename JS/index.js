@@ -1,4 +1,8 @@
 const currentPage = window.location.pathname;
+const theme = localStorage.getItem("theme");
+const darkThemed = (element) => {
+  theme === "dark" && element.classList.add("dark-header");
+};
 
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
@@ -88,10 +92,13 @@ const displayCard = function (card) {
       border.innerHTML = "<span>Border Countries: </span>";
       if (country.borders)
         for (const item of country.borders)
-          border.innerHTML += ` <span class='border'>${
-            findme(item, "cca3").name.common
-          }</span>`;
-      else border.innerHTML += "<span class='border'> none </span>";
+          border.innerHTML += ` <span class='border ${
+            theme === "dark" ? "dark-header" : ""
+          }'>${findme(item, "cca3").name.common}</span>`;
+      else
+        border.innerHTML += `<span class='border ${
+          theme === "dark" ? "dark-header" : ""
+        }'> none </span>`;
     });
 };
 
@@ -99,8 +106,6 @@ const displayCard = function (card) {
 const container = document.querySelector(".grid-container");
 
 const generateCards = function (json) {
-  const theme = localStorage.getItem("theme");
-
   for (const item of json) {
     // Creating elements
     const card = document.createElement("div");
@@ -125,8 +130,8 @@ const generateCards = function (json) {
     capital.innerHTML = `Capital: <span>${item.capital}</span>`;
 
     // Setting classes
-    card.classList.add("card");
-    theme === "dark" && card.classList.add("dark-header");
+    card.classList.add(`card`);
+    darkThemed(card);
     countryName.classList.add("name");
     cardInfo.classList.add("cardInfo");
     population.classList.add("property");
