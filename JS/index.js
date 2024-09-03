@@ -170,7 +170,12 @@ const regionName = document.getElementsByClassName("region");
 function handleFilter() {
   const selectedValue = document.querySelector("select").value;
   Array.from(regionName).forEach((item) => {
-    if (selectedValue === "All" || item.innerText.includes(selectedValue)) {
+    if (
+      (selectedValue === "All" || item.innerText.includes(selectedValue)) &&
+      item.parentElement.innerText
+        .toLocaleLowerCase()
+        .startsWith(searchInput.value.toLocaleLowerCase())
+    ) {
       item.parentElement.parentElement.style.display = "grid";
     } else {
       item.parentElement.parentElement.style.display = "none";
