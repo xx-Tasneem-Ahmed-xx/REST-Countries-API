@@ -60,3 +60,18 @@ body > main > div > div.cardInfo > p {
   align-items: center;
   margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+  main .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .cardInfo .flex-p {
+    flex-wrap: nowrap;
+  }
+  main > div > div.cardInfo > div {
+    margin-bottom: 160px;
+  }
+}
