@@ -158,7 +158,8 @@ function handleSearch() {
       country.innerText
         .toLowerCase()
         .startsWith(searchInput.value.toLowerCase()) &&
-      country.parentElement.innerText.includes(selectedRegion)
+      (country.parentElement.innerText.includes(selectedRegion) ||
+        selectedRegion == "All")
     ) {
       country.parentElement.parentElement.style.display = "grid";
       found = true;
@@ -173,6 +174,7 @@ function handleSearch() {
 //filter function
 const regionName = document.getElementsByClassName("region");
 function handleFilter() {
+  let found = false;
   const selectedValue = document.querySelector("select").value;
   Array.from(regionName).forEach((item) => {
     if (
@@ -182,8 +184,11 @@ function handleFilter() {
         .startsWith(searchInput.value.toLocaleLowerCase())
     ) {
       item.parentElement.parentElement.style.display = "grid";
+      found = true;
     } else {
       item.parentElement.parentElement.style.display = "none";
     }
   });
+  if (!found) message.style.display = "block";
+  else message.style.display = "none";
 }
