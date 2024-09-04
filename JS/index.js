@@ -3,7 +3,6 @@ const theme = localStorage.getItem("theme");
 const darkThemed = (element) => {
   theme === "dark" && element.classList.add("dark-header");
 };
-
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
   .then((json) => {
