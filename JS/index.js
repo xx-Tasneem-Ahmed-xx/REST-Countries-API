@@ -6,7 +6,7 @@ const darkThemed = (element) => {
 fetch("https://restcountries.com/v3.1/all")
   .then((response) => response.json())
   .then((json) => {
-    if (currentPage.includes("index.html")) generateCards(json);
+    generateCards(json);
   });
 
 const getCard = function (event) {
