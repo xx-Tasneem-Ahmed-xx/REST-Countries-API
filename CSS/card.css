@@ -65,13 +65,14 @@ body > main > div > div.cardInfo > p {
   main .card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
   .cardInfo .flex-p {
     flex-wrap: nowrap;
   }
   main > div > div.cardInfo > div {
     margin-bottom: 160px;
+  }
+  .card img {
+    width: 300px;
   }
 }
