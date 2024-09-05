@@ -36,7 +36,21 @@
   padding-left: 20px;
 }
 
+@media (max-width: 1400px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  h1 {
+    font-size: 3vh !important;
+  }
   .main {
     margin-top: 1rem;
   }

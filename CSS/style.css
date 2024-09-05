@@ -126,7 +126,7 @@ option:hover {
     width: 100%;
   }
   select {
-    width: 45vh;
+    width: 200%;
   }
   header {
     margin-top: 0;
